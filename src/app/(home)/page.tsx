@@ -30,7 +30,7 @@ export default async function Home() {
   })
 
   return (
-    <div className="mt-[30px]">
+    <div className="py-8">
       <PromoBanner
         src="/banner-home-01.png"
         alt="Até 55% de desconto esse mês!"
