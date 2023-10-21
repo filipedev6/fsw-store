@@ -32,7 +32,7 @@ export function Header() {
   }
 
   return (
-    <header className="bg-[#0B0B0B]/50 backdrop-blur-md sticky inset-x-0 top-0">
+    <header className="bg-[#0B0B0B]/50 backdrop-blur-md sticky inset-x-0 top-0 z-[99999]">
       <div className="px-[1.875rem] py-[1.6563rem] flex justify-between items-center">
         <Sheet>
           <SheetTrigger asChild>

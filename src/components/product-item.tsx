@@ -1,5 +1,5 @@
 import { ProductWithTotalPrice } from '@/helpers/product'
-import { numberFormattedToCoin } from '@/utils/NumberFormattedToCoin'
+import { numberFormattedToCoin } from '@/utils/numberFormattedToCoin'
 import { ArrowDownIcon } from 'lucide-react'
 import Image from 'next/image'
 import { Badge } from './ui/badge'
@@ -13,8 +13,8 @@ export function ProductItem({ product }: ProductItemProps) {
   const productTotalPrice = numberFormattedToCoin(Number(product.totalPrice))
 
   return (
-    <div className="flex flex-col max-w-[156px]">
-      <div className="relative bg-accent rounded-lg h-[170px] w-[156px] flex items-center justify-center">
+    <div className="flex flex-col">
+      <div className="relative bg-accent rounded-lg h-[170px] w-full flex items-center justify-center">
         <Image
           src={product.imageUrls[0]}
           alt={product.name}
