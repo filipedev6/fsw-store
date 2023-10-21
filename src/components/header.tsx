@@ -9,12 +9,15 @@ import {
   ShoppingCartIcon,
 } from 'lucide-react'
 import { signIn, signOut, useSession } from 'next-auth/react'
-import { Button } from './ui/button'
+import { Button, buttonVariants } from './ui/button'
 import { Separator } from './ui/separator'
 
+import { cn } from '@/lib/utils'
+import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -32,7 +35,7 @@ export function Header() {
   }
 
   return (
-    <header className="bg-[#0B0B0B]/50 backdrop-blur-md sticky inset-x-0 top-0 z-[99999]">
+    <header className="bg-[#0B0B0B]/50 backdrop-blur-md sticky inset-x-0 top-0 z-[1]">
       <div className="px-[1.875rem] py-[1.6563rem] flex justify-between items-center">
         <Sheet>
           <SheetTrigger asChild>
@@ -96,13 +99,21 @@ export function Header() {
                 <PercentIcon size={16} />
                 Ofertas disponíveis
               </Button>
-              <Button
-                variant="outline"
-                className="w-full justify-start gap-2 font-medium text-xs"
-              >
-                <ListOrderedIcon size={16} />
-                Catálogo
-              </Button>
+              <SheetClose asChild>
+                <Link
+                  href="/catalog"
+                  className={cn(
+                    buttonVariants({
+                      variant: 'outline',
+                      className:
+                        'w-full justify-start gap-2 font-medium text-xs',
+                    }),
+                  )}
+                >
+                  <ListOrderedIcon size={16} />
+                  Catálogo
+                </Link>
+              </SheetClose>
             </div>
             <div className="mt-auto">
               <Button variant="outline" className="font-medium text-xs">
@@ -112,9 +123,13 @@ export function Header() {
           </SheetContent>
         </Sheet>
 
-        <h1 className="font-semibold text-lg">
+        <Link
+          href="/"
+          className="font-semibold text-lg select-none"
+          draggable={false}
+        >
           <strong className="text-primary font-bold">FSW</strong> Store
-        </h1>
+        </Link>
 
         <Button size="icon" variant="outline">
           <ShoppingCartIcon className="w-4 h-4" strokeWidth={3} />
