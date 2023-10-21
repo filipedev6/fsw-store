@@ -41,7 +41,7 @@ export function ProductItem({ product }: ProductItemProps) {
           {product.discountPercentage > 0 && (
             <>
               <p className="font-bold text-base">{productTotalPrice}</p>
-              <p className="opacity-75 line-through text-xs text-[#676767]">
+              <p className="opacity-75 line-through text-xs text-[#676767] truncate">
                 {productBasePrice}
               </p>
             </>
