@@ -49,7 +49,7 @@ export function Header() {
             <div className="mt-6 flex flex-col gap-2">
               {status === 'authenticated' && data.user && (
                 <div className="flex flex-col mb-4">
-                  <div className="flex items-center gap-2 pb-4 ">
+                  <div className="flex items-center gap-2 pb-4">
                     <Avatar>
                       <AvatarFallback>
                         {data.user.name?.[0].toUpperCase()}
