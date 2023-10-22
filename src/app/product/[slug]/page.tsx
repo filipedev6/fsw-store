@@ -1,5 +1,6 @@
 import { prismaClient } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
+import { ProductImages } from './components/product-images'
 
 interface ProductDynamicProps {
   params: {
@@ -16,5 +17,9 @@ export default async function ProductDynamic({ params }: ProductDynamicProps) {
 
   if (!product) return notFound()
 
-  return <h1>{params.slug}</h1>
+  return (
+    <div>
+      <ProductImages imageUrls={product.imageUrls} name={product.name} />
+    </div>
+  )
 }
