@@ -19,7 +19,7 @@ export default async function CategoryDynamic({
       slug: params.slug,
     },
     include: {
-      Product: true,
+      products: true,
     },
   })
 
@@ -36,7 +36,7 @@ export default async function CategoryDynamic({
       </Badge>
 
       <div className="grid grid-cols-2 gap-x-4 gap-y-8">
-        {category.Product.map((product) => (
+        {category.products.map((product) => (
           <ProductItem
             product={computedProductTotalPrice(product)}
             key={product.id}
