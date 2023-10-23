@@ -1,3 +1,5 @@
+import { SectionTitle } from '@/app/(home)/components/section-title'
+import { ProductList } from '@/components/product-list'
 import { computedProductTotalPrice } from '@/helpers/product'
 import { prismaClient } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
@@ -15,14 +17,31 @@ export default async function ProductDynamic({ params }: ProductDynamicProps) {
     where: {
       slug: params.slug,
     },
+    include: {
+      category: {
+        include: {
+          products: {
+            where: {
+              slug: {
+                not: params.slug,
+              },
+            },
+          },
+        },
+      },
+    },
   })
 
   if (!product) return notFound()
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 pb-8">
       <ProductImages imageUrls={product.imageUrls} name={product.name} />
       <ProductDetails product={computedProductTotalPrice(product)} />
+      <div className="mt-14">
+        <SectionTitle>Produtos recomendados</SectionTitle>
+        <ProductList products={product.category.products} />
+      </div>
     </div>
   )
 }
