@@ -14,7 +14,9 @@ import { Separator } from './ui/separator'
 
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
+import { Cart } from './cart'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
+import { Badge } from './ui/badge'
 import {
   Sheet,
   SheetClose,
@@ -131,9 +133,26 @@ export function Header() {
           <strong className="text-primary font-bold">FSW</strong> Store
         </Link>
 
-        <Button size="icon" variant="outline">
-          <ShoppingCartIcon className="w-4 h-4" strokeWidth={3} />
-        </Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button size="icon" variant="outline">
+              <ShoppingCartIcon className="w-4 h-4" strokeWidth={3} />
+            </Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <Badge
+                className="gap-1 w-fit border-primary px-3 py-[.375rem] rounded-full"
+                variant="outline"
+              >
+                <ShoppingCartIcon strokeWidth={3} size={16} />
+                <span className="text-base uppercase">Carrinho</span>
+              </Badge>
+
+              <Cart />
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
       </div>
       <Separator className="bg-[#2A2A2A]" />
     </header>

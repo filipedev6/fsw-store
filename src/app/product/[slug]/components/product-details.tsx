@@ -3,6 +3,7 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ProductWithTotalPrice } from '@/helpers/product'
+import { CartContext } from '@/providers/cart'
 import { numberFormattedToCoin } from '@/utils/numberFormattedToCoin'
 import {
   ArrowDownIcon,
@@ -10,18 +11,16 @@ import {
   ArrowRightIcon,
   TruckIcon,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
 interface ProductDetailsProps {
-  product: Pick<
-    ProductWithTotalPrice,
-    'basePrice' | 'description' | 'discountPercentage' | 'totalPrice' | 'name'
-  >
+  product: ProductWithTotalPrice
 }
 
 export function ProductDetails({ product }: ProductDetailsProps) {
   const productBasePrice = numberFormattedToCoin(Number(product.basePrice))
   const productTotalPrice = numberFormattedToCoin(Number(product.totalPrice))
+  const { addProductToCart } = useContext(CartContext)
 
   const [quantity, setQuantity] = useState(1)
 
@@ -31,6 +30,10 @@ export function ProductDetails({ product }: ProductDetailsProps) {
 
   function handleIncreaseQuantityClick() {
     setQuantity((state) => state + 1)
+  }
+
+  function handleAddProductToCart() {
+    addProductToCart({ ...product, quantity })
   }
 
   return (
@@ -79,7 +82,10 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         <p className="text-sm text-[#A1A1A1] truncate">{product.description}</p>
       </div>
 
-      <Button className="uppercase mt-8 font-bold">
+      <Button
+        onClick={handleAddProductToCart}
+        className="uppercase mt-8 font-bold"
+      >
         Adicionar ao carrinho
       </Button>
 
