@@ -1,6 +1,7 @@
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { AuthProvider } from '@/providers/auth'
+import { CartProvider } from '@/providers/cart'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
@@ -25,9 +26,11 @@ export default function RootLayout({
       <body className={poppins.className}>
         <div className="flex flex-col h-full">
           <AuthProvider>
-            <Header />
-            <div className="flex-1">{children}</div>
-            <Footer />
+            <CartProvider>
+              <Header />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </CartProvider>
           </AuthProvider>
         </div>
       </body>
