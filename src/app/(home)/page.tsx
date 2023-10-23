@@ -1,4 +1,4 @@
-import { SectionTitle } from '@/app/(home)/components/section-title'
+import { SectionTitle } from '@/components/section-title'
 import { prismaClient } from '@/lib/prisma'
 import { Categories } from './components/categories'
 import { ProductList } from '../../components/product-list'

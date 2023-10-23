@@ -1,5 +1,5 @@
-import { SectionTitle } from '@/app/(home)/components/section-title'
 import { ProductList } from '@/components/product-list'
+import { SectionTitle } from '@/components/section-title'
 import { computedProductTotalPrice } from '@/helpers/product'
 import { prismaClient } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
@@ -38,7 +38,7 @@ export default async function ProductDynamic({ params }: ProductDynamicProps) {
     <div className="flex flex-col gap-8 pb-8">
       <ProductImages imageUrls={product.imageUrls} name={product.name} />
       <ProductDetails product={computedProductTotalPrice(product)} />
-      <div className="mt-14">
+      <div className="mt-8">
         <SectionTitle>Produtos recomendados</SectionTitle>
         <ProductList products={product.category.products} />
       </div>
