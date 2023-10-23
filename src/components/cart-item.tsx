@@ -12,8 +12,11 @@ interface CartItemProps {
 export function CartItem({ product }: CartItemProps) {
   const productTotalPrice = numberFormattedToCoin(Number(product.totalPrice))
   const productBasePrice = numberFormattedToCoin(Number(product.basePrice))
-  const { decreaseProductQuantity, increaseProductQuantity } =
-    useContext(CartContext)
+  const {
+    decreaseProductQuantity,
+    increaseProductQuantity,
+    removeProductFromCart,
+  } = useContext(CartContext)
 
   return (
     <div className="flex items-center justify-between">
@@ -65,7 +68,11 @@ export function CartItem({ product }: CartItemProps) {
           </div>
         </div>
       </div>
-      <Button size="icon" variant="outline">
+      <Button
+        onClick={() => removeProductFromCart(product.id)}
+        size="icon"
+        variant="outline"
+      >
         <TrashIcon size={16} strokeWidth={3} />
       </Button>
     </div>
