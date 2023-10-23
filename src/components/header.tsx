@@ -148,9 +148,8 @@ export function Header() {
                 <ShoppingCartIcon strokeWidth={3} size={16} />
                 <span className="text-base uppercase">Carrinho</span>
               </Badge>
-
-              <Cart />
             </SheetHeader>
+            <Cart />
           </SheetContent>
         </Sheet>
       </div>
