@@ -1,5 +1,7 @@
+import { computedProductTotalPrice } from '@/helpers/product'
 import { prismaClient } from '@/lib/prisma'
 import { notFound } from 'next/navigation'
+import { ProductDetails } from './components/product-details'
 import { ProductImages } from './components/product-images'
 
 interface ProductDynamicProps {
@@ -18,8 +20,9 @@ export default async function ProductDynamic({ params }: ProductDynamicProps) {
   if (!product) return notFound()
 
   return (
-    <div>
+    <div className="flex flex-col gap-8">
       <ProductImages imageUrls={product.imageUrls} name={product.name} />
+      <ProductDetails product={computedProductTotalPrice(product)} />
     </div>
   )
 }
