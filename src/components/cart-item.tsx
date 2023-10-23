@@ -1,7 +1,8 @@
-import { CartProduct } from '@/providers/cart'
+import { CartContext, CartProduct } from '@/providers/cart'
 import { numberFormattedToCoin } from '@/utils/numberFormattedToCoin'
 import { ArrowLeftIcon, ArrowRightIcon, TrashIcon } from 'lucide-react'
 import Image from 'next/image'
+import { useContext } from 'react'
 import { Button } from './ui/button'
 
 interface CartItemProps {
@@ -11,6 +12,7 @@ interface CartItemProps {
 export function CartItem({ product }: CartItemProps) {
   const productTotalPrice = numberFormattedToCoin(Number(product.totalPrice))
   const productBasePrice = numberFormattedToCoin(Number(product.basePrice))
+  const { decreaseProductQuantity } = useContext(CartContext)
 
   return (
     <div className="flex items-center justify-between">
@@ -40,7 +42,12 @@ export function CartItem({ product }: CartItemProps) {
           </div>
 
           <div className="flex items-center gap-2 mt-auto">
-            <Button size="icon" variant="outline" className="w-8 h-8">
+            <Button
+              onClick={() => decreaseProductQuantity(product.id)}
+              size="icon"
+              variant="outline"
+              className="w-8 h-8"
+            >
               <ArrowLeftIcon size={14} />
             </Button>
 
