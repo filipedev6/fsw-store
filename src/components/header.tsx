@@ -142,7 +142,7 @@ export function Header() {
           <SheetContent>
             <SheetHeader>
               <Badge
-                className="gap-1 w-fit border-primary px-3 py-[.375rem] rounded-full"
+                className="gap-1 w-fit border-primary px-3 py-[.375rem] rounded-full flex items-center"
                 variant="outline"
               >
                 <ShoppingCartIcon strokeWidth={3} size={16} />

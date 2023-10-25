@@ -19,7 +19,7 @@ export function CartItem({ product }: CartItemProps) {
   } = useContext(CartContext)
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between gap-4">
       <div className="flex items-center gap-4">
         <div className="bg-accent flex items-center justify-center rounded-lg w-[77px] h-[77px]">
           <Image
